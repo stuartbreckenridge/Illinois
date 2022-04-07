@@ -1,0 +1,75 @@
+<!-- Template Variables
+
+title: The title of the article
+preferred_link: The best link to associate with the article for linking out.
+
+external_link_label: A localized label for the external link.
+external_link_stripped: The external link minus the scheme. Useful for displaying the external link.
+external_link: The external link of the article if there is one provided by the author.
+
+feed_link_title: The name of the feed associated with this article.
+feed_link: The URL of the feed associated with this article.
+byline: HTML that combines all the authors and links to them if available.
+avatar_src: The image source URL for the feed icon / avatar.
+dateline_style: Either "articleDateline" or "articleDatelineTitle" depending on if the title was populated or not.
+
+datetime_long: Long version of a combined publish date and time.
+datetime_medium: Medium length version of a combined publish date and time.
+datetime_short: Short version of a combined publish date and time.
+
+date_long: Long version of the publish date.
+date_medium: Medium version of the publish date.
+date_short: Long version of the publish date.
+
+time_long: Long version of the publish time.
+time_medium: Medium version of the publish time.
+time_short: Long version of the publish time.
+
+text_size_class: The size class that the user has selected in Preferences for article text.
+body: The body of the article.
+
+-->
+
+<div class="menu-bar">
+	<ul class="menu-items">
+		<li class="nnw"></li>
+		<li style="padding-left: 16px;"><a href="https://netnewswire.com">NetNewsWire</a></li>
+		<li style="padding-left: 16px;">File</li>
+		<li style="padding-left: 16px;"><a href="[[feed_link]]">View</a></li>
+		<span id="hhmm" style="margin-left: auto">HH:MM</span>
+	</ul>
+</div>
+
+<div class="nnw-desktop">
+	
+
+<div class="article-window">
+
+<div class="title-bar">
+	<button style="margin-right: -40px" class="close"></button>
+	<h1 class="title">[[feed_link_title]]</h1>
+</div>
+
+<article style="padding: 2em;">
+<div class="articleTitle"><h1><a href="[[preferred_link]]">[[title]]</a></h1></div>
+<div class="[[dateline_style]]"><a href="[[preferred_link]]">[[datetime_medium]]</a></div>
+<div class="externalLink">[[external_link_label]] <a href="[[external_link]]">[[external_link_stripped]]</a></div>
+<div id="bodyContainer" class="articleBody [[text_size_class]]">[[body]]</div>
+</article>
+</div>
+</div>
+
+<script>
+function updateTime() {
+	var dt = new Date();
+	document.getElementById("hhmm").innerHTML = dt.toLocaleTimeString();
+}
+updateTime();
+setInterval(updateTime, 1000);
+
+function updateViewPort() {
+	document.querySelector('meta[name="viewport"]').setAttribute("content", "width=device-width, initial-scale=1, viewport-fit=cover");
+}
+updateViewPort();
+
+</script>
